@@ -1,0 +1,7 @@
+/* styles from UnoCSS only for autocomplete */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
