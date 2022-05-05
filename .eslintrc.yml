@@ -1,0 +1,48 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - airbnb
+  - plugin:react/recommended
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - react
+  - only-warn
+rules:
+  import/no-unresolved: off
+  import/extensions: off
+  no-undef: off
+  react/react-in-jsx-scope: off
+  react/jsx-filename-extension: off
+  eqeqeq: off
+  camelcase: off
+  react/destructuring-assignment: off
+  no-empty: off
+  react/jsx-props-no-spreading: off
+  no-unused-vars: off
+  react/jsx-one-expression-per-line: off
+  react/require-default-props: off
+  jsx-a11y/anchor-is-valid: off
+  max-len: off
+  no-plusplus: off
+  no-unused-expressions: off
+  no-mixed-operators: off
+  no-shadow: off
+  import/prefer-default-export: off
+  react/no-unused-prop-types: off
+  no-param-reassign: off
+  react/jsx-no-useless-fragment: off
+  react/jsx-key: warn
+  jsx-a11y/label-has-associated-control: off
+  react/jsx-no-undef: off
+  no-redeclare: off
+  no-new: off
+  default-param-last: off
+  no-underscore-dangle: off
+  no-use-before-define: off

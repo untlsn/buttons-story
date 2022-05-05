@@ -1,6 +1,5 @@
 import logo from '~/assets/images/logo.svg';
 
-
 export default function About() {
   return (
     <div className="text-center">
