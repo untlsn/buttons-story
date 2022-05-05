@@ -1,48 +1,15 @@
-import logo from './assets/images/logo.svg'
+import { Suspense } from 'react';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import pages from '~react-pages';
+import { useRoutes } from 'react-router-dom';
+
+export default function App() {
+  const routes = useRoutes(pages);
 
   return (
-    <div className="text-center">
-      <header className="App-header">
-        <img src={logo} className="App-image" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button
-            type="button"
-            className="App-button"
-            onClick={() => setCount((count) => count + 1)}
-          >
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="text-react-blue"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <span> | </span>
-          <a
-            className="text-react-blue"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <Suspense fallback={<p>Loading...</p>}>
+      {routes}
+    </Suspense>
   )
 }
-
-export default App
