@@ -20,6 +20,14 @@ export default {
       imports: [
         'react',
         'react-router-dom',
+        {
+          mobx: ['makeAutoObservable'],
+          'mobx-react-lite': [
+            'useLocalObservable',
+            ['observer', 'mobxObserver'],
+          ],
+          '/src/hooks/Observer': [['default', 'Observer']],
+        },
       ],
     }),
     Inspect(),
