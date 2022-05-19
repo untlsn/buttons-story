@@ -26,7 +26,7 @@ export default {
             'useLocalObservable',
             ['observer', 'mobxObserver'],
           ],
-          '/src/hooks/Observer': [['default', 'Observer']],
+          '/src/hooks/O': [['default', 'O']],
         },
       ],
     }),

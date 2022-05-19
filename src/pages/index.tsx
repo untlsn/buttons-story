@@ -1,10 +1,8 @@
 import logo from '~/assets/images/logo.svg';
 import '~/App.css';
-import useLocalRef from '~/hooks/useLocalRef';
+import store from '~/store/store';
 
 export default function App() {
-  const count = useLocalRef(0);
-
   return (
     <div className="text-center">
       <header className="App-header">
@@ -14,11 +12,9 @@ export default function App() {
           <button
             type="button"
             className="App-button"
-            onClick={() => {
-              count.value++;
-            }}
+            onClick={store.increment}
           >
-            count is: <Observer>{() => count.value}</Observer>
+            count is: <O>{() => store.count}</O>
           </button>
         </p>
         <p>

@@ -10,7 +10,7 @@ declare global {
   const mobxObserver: typeof import('mobx-react-lite')['observer']
   const Navigate: typeof import('react-router-dom')['Navigate']
   const NavLink: typeof import('react-router-dom')['NavLink']
-  const Observer: typeof import('/src/hooks/Observer')['default']
+  const O: typeof import('/src/hooks/O')['default']
   const Outlet: typeof import('react-router-dom')['Outlet']
   const Route: typeof import('react-router-dom')['Route']
   const Routes: typeof import('react-router-dom')['Routes']
