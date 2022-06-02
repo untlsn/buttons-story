@@ -1,12 +1,10 @@
 # Features
 
-- vite + pnpm for speed
+- Vite + pnpm for speed
 - UnoCSS for styling
-- unplugin-auto-import for auto import fundamental functions like useState
-- vite-plugin-inspect for code and bundle analysis 
-- vite-plugin-pages for directory base routes
-- react-router-dom of course
-- unti-react for many useful hooks
-
-# Plans
-- [ ] Husky
+- Unplugin-auto-import for auto import fundamental functions like useState
+- Vite-plugin-inspect for code and bundle analysis 
+- Vite-plugin-pages for directory base routes
+- React-router-dom of course
+- Unti-react for many useful hooks
+- Storybook for components testings
