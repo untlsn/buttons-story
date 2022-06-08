@@ -4,22 +4,13 @@ const path = require('path');
 const toAbsolute = (p) => path.resolve(__dirname, p);
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8').replace(/>\s+</g, '><');
 
-// determine routes to pre-render from src/pages
-const routesToPrerender = fs
-  .readdirSync(toAbsolute('src/pages'))
-  .map((file) => {
-    const name = file.replace(/\.[tj]sx$/, '').toLowerCase();
-    return name === 'home' ? '/' : `/${name}`;
-  });
-
 const bootstrap = async () => {
-  const { render } = await import('./dist/server/entry-server.js');
+  const { render, names } = await import('./dist/server/entry-server.js');
+  const staticNames = names.filter((name) => !name.includes('['));
 
-  for (const _url of routesToPrerender) {
-    const url = _url.replace(/index/g, '');
+  for (const _url of staticNames) {
+    const url = `/${_url.replace(/(\.\/pages\/)|(index)|(\.[tj]sx)/g, '')}`;
     const appHtml = await render(url);
-
-    if (!appHtml) continue;
 
     const html = template.replace('<!--app-html-->', appHtml);
 

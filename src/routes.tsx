@@ -24,21 +24,25 @@ export function getLazyRoutes(): Route[] {
   });
 }
 
-export function getRoutes(): Route[] {
+export function getRoutes() {
   const pages = import.meta.globEager('./pages/**');
+  const names = Object.keys(pages);
 
-  return Object.keys(pages).map((path) => {
-    const Component = pages[path].default;
+  return {
+    names,
+    routes: names.map((path) => {
+      const Component = pages[path].default;
 
-    return {
-      path: getPath(path),
-      Comp: () => (
-        <Suspense fallback={<>Loading...</>}>
-          <Component />
-        </Suspense>
-      ),
-    };
-  });
+      return {
+        path: getPath(path),
+        Comp: () => (
+          <Suspense fallback={<>Loading...</>}>
+            <Component />
+          </Suspense>
+        ),
+      };
+    }) as Route[],
+  };
 }
 
 export interface Route { path: string, Comp: any }
