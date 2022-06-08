@@ -1,13 +1,14 @@
-import { Suspense } from 'react';
-import { useRoutes } from 'react-router-dom';
-import pages from '~react-pages';
+import { Routes } from 'react-router-dom';
+import 'uno.css';
+import '~/assets/style/reset.css';
+import type { Route } from '~/routes';
 
-export default function App() {
-  const routes = useRoutes(pages);
-
+export default function App({ routes }: { routes: Route[] }) {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      {routes}
-    </Suspense>
+    <Routes>
+      {routes.map(({ path, Comp }) => (
+        <Route key={path} path={path} element={<Comp />} />
+      ))}
+    </Routes>
   );
 }

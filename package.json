@@ -3,13 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node server.mjs",
+    "build": "vite build --outDir dist/static && npm run build:server && node prerender",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.1",
+    "serve-static": "^1.15.0",
     "@mdx-js/react": "^2.1.1",
     "@storybook/addon-backgrounds": "^6.5.6",
     "@storybook/addon-docs": "^6.5.6",
