@@ -3,6 +3,7 @@ import 'uno.css';
 import '~/assets/style/reset.css';
 import Helmet from 'react-helmet';
 import type { Route } from '~/routes';
+import favicon from '~/assets/images/favicon.svg';
 
 export default function App({ routes }: { routes: Route[] }) {
   return (
@@ -11,7 +12,7 @@ export default function App({ routes }: { routes: Route[] }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="theme-color" content="#E22D40" />
+        <link rel="icon" type="image/svg+xml" href={favicon} />
         <title>App</title>
       </Helmet>
       <Routes>
