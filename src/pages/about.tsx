@@ -1,8 +1,10 @@
 import logo from '~/assets/images/logo.svg';
+import Title from '~/providers/Title';
 
 export default function About() {
   return (
     <div className="text-center">
+      <Title>App about</Title>
       <header className="App-header">
         <img src={logo} className="App-image" alt="logo" />
         <p>About</p>

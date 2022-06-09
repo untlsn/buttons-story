@@ -1,9 +1,8 @@
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import express from 'express';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import renderTemplate from './server/renderTemplate.mjs';
+import { toAbsolute } from './server/root.mjs';
+import print from './server/print.mjs';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
@@ -14,10 +13,8 @@ export async function createServer(
   isProd = process.env.NODE_ENV === 'production',
   hmrPort,
 ) {
-  const resolve = (p) => path.resolve(__dirname, p);
-
   const indexProd = isProd
-    ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
+    ? fs.readFileSync(toAbsolute('dist/client/index.html'), 'utf-8')
     : '';
 
   const app = express();
@@ -50,12 +47,13 @@ export async function createServer(
   } else {
     app.use((await import('compression')).default());
     app.use(
-      (await import('serve-static')).default(resolve('dist/client'), {
+      (await import('serve-static')).default(toAbsolute('dist/client'), {
         index: false,
       }),
     );
   }
 
+  // eslint-disable-next-line consistent-return
   app.use('*', async (req, res) => {
     try {
       const url = req.originalUrl;
@@ -64,7 +62,7 @@ export async function createServer(
       let render;
       if (!isProd) {
         // always read fresh template in dev
-        template = fs.readFileSync(resolve('index.html'), 'utf-8');
+        template = fs.readFileSync(toAbsolute('index.html'), 'utf-8');
         template = await vite.transformIndexHtml(url, template);
         render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
       } else {
@@ -81,12 +79,12 @@ export async function createServer(
         return res.redirect(301, context.url);
       }
 
-      const html = template.replace('<!--app-html-->', appHtml);
+      const html = renderTemplate(template, appHtml);
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e) {
       !isProd && vite.ssrFixStacktrace(e);
-      console.log(e.stack);
+      print(e.stack);
       res.status(500).end(e.stack);
     }
   });
@@ -98,6 +96,6 @@ const PORT = 3000;
 
 if (!isTest) {
   createServer().then(({ app }) => app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
+    print(`http://localhost:${PORT}`);
   }));
 }
