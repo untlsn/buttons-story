@@ -1,9 +1,9 @@
 import {
   defineConfig,
+  presetUno,
+  presetWind,
   transformerDirectives,
   transformerVariantGroup,
-  presetWind,
-  presetUno,
 } from 'unocss';
 // @ts-ignore
 import twConfig from './tailwind.config.cjs';
@@ -13,6 +13,7 @@ export default defineConfig({
     /* Example
     ['name','uno-classes'],
     */
+    ['native-hocus', 'hocus:opacity-80 transition-opacity'],
   ],
   // WebStorm don't support unocss config, so theme put in tailwind.config.cjs
   theme: {
@@ -39,6 +40,14 @@ export default defineConfig({
       return {
         matcher: rest.join(':'),
         parent: `@media (max-width: ${mediaPx}px)`,
+      };
+    },
+    (matcher) => {
+      if (!matcher.startsWith('hocus:')) return matcher;
+
+      return {
+        matcher: matcher.slice(6),
+        selector: (s) => `${s}:hover, ${s}:focus`,
       };
     },
   ],

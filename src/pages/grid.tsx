@@ -1,7 +1,9 @@
 import Development from '~/components/templates/development';
 
-export default function App() {
+function Grid() {
   return (
     <Development />
   );
 }
+
+export default Grid;

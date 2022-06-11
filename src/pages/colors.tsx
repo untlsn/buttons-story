@@ -1,7 +1,9 @@
 import Development from '~/components/templates/development';
 
-export default function App() {
+function Colors() {
   return (
     <Development />
   );
 }
+
+export default Colors;
