@@ -34,6 +34,14 @@ function Buttons() {
           <Button disabled variant="text" />
         </ComponentPreview>
       </div>
+      <div className="flex gap-16 align-top">
+        <ComponentPreview name="<Button startIcon='i-mdi-local-grocery-store' />">
+          <Button color="primary" startIcon="i-mdi-local-grocery-store" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button endIcon='i-mdi-local-grocery-store' />">
+          <Button color="primary" endIcon="i-mdi-local-grocery-store" />
+        </ComponentPreview>
+      </div>
     </div>
   );
 }

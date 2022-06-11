@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.18.2
+  '@iconify-json/mdi': ^1.1.19
   '@mdx-js/react': ^2.1.1
   '@storybook/addon-actions': ^6.5.6
   '@storybook/addon-backgrounds': ^6.5.6
@@ -63,6 +64,7 @@ specifiers:
 
 dependencies:
   '@babel/core': 7.18.2
+  '@iconify-json/mdi': 1.1.19
   '@mdx-js/react': 2.1.1_react@18.1.0
   '@storybook/addon-actions': 6.5.7_ef5jwxihqo6n7gxfmzogljlgcm
   '@storybook/addon-backgrounds': 6.5.7_ef5jwxihqo6n7gxfmzogljlgcm
@@ -1778,6 +1780,12 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: false
+
+  /@iconify-json/mdi/1.1.19:
+    resolution: {integrity: sha512-pEjLsJJBL5ZYRa+b2A5iFFF7jXNc+fmfNDPmE+mwPjEHpt9yPAZXzjdK1UvebtTq8Gh7L+E4KrAQW3LMIJtkjQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
     dev: false
 
   /@iconify/types/1.1.0:

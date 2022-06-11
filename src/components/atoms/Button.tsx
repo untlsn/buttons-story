@@ -6,6 +6,8 @@ export interface ButtonProps extends HTMLButtonProps {
   variant?: keyof typeof themes,
   disableShadow?: boolean
   color?: keyof typeof bgColors
+  startIcon?: string,
+  endIcon?: string,
 }
 
 const bgColors = {
@@ -49,7 +51,9 @@ function Button(props: ButtonProps) {
         '--hocus-colors': bgHocusColors[color],
       } as any}
     >
+      {props.startIcon && <i className={`${props.startIcon} mr-2`} />}
       {props.children}
+      {props.endIcon && <i className={`${props.endIcon} ml-2`} />}
     </button>
   );
 }

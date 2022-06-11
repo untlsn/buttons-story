@@ -4,6 +4,7 @@ import {
   presetWind,
   transformerDirectives,
   transformerVariantGroup,
+  presetIcons,
 } from 'unocss';
 // @ts-ignore
 import twConfig from './tailwind.config.cjs';
@@ -54,6 +55,13 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetWind(),
+    presetIcons({
+      extraProperties: {
+        display: 'inline-block',
+        'vertical-align': 'top',
+        height: '1.5em',
+      },
+    }),
   ],
   transformers: [
     transformerDirectives(),
