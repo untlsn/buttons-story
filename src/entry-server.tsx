@@ -1,15 +1,21 @@
 import ReactDomServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
+import { HeadProvider as _HeadProvider } from 'react-head';
+import { FC } from 'react';
 import App from './App';
 import { getRoutes } from '~/routes';
 
 const { routes, names } = getRoutes();
 
-export function render(url: string) {
+const HeadProvider = _HeadProvider as FC<{ headTags: any[], children: any }>;
+
+export function render(url: string, headTags = []) {
   return ReactDomServer.renderToString(
-    <StaticRouter location={url}>
-      <App routes={routes} />
-    </StaticRouter>,
+    <HeadProvider headTags={headTags}>
+      <StaticRouter location={url}>
+        <App routes={routes} />
+      </StaticRouter>
+    </HeadProvider>,
   );
 }
 export { names };

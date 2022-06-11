@@ -1,13 +1,7 @@
-import { Helmet } from 'react-helmet';
+import { renderToString } from 'react-dom/server';
 
-export default function renderTemplate(template, appHtml) {
-  const helmet = Helmet.renderStatic();
-
+export default function renderTemplate(template, appHtml, headTags) {
   return template
     .replace('<!--app-html-->', appHtml)
-    .replace('<!--head-html-->', [
-      helmet.title.toString(),
-      helmet.meta.toString(),
-      helmet.link.toString(),
-    ].join(''));
+    .replace('<!--head-html-->', renderToString(headTags));
 }

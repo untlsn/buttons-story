@@ -12,10 +12,11 @@ const bootstrap = async () => {
   // eslint-disable-next-line no-restricted-syntax
   for (const _url of staticNames) {
     const url = `/${_url.replace(/(\.\/pages\/)|(index)|(\.[tj]sx)/g, '')}`;
+    const headTags = [];
     // eslint-disable-next-line no-await-in-loop
-    const appHtml = await render(url);
+    const appHtml = await render(url, headTags);
 
-    const html = renderTemplate(template, appHtml);
+    const html = renderTemplate(template, appHtml, headTags);
 
     const filePath = `dist/static${url === '/' ? '/index' : url}.html`;
     fs.writeFileSync(toAbsolute(filePath), html);

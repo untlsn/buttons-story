@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { HeadProvider as _HeadProvider } from 'react-head';
 import App from './App';
 import 'uno.css';
 import '~/assets/style/reset.css';
 import { getLazyRoutes } from '~/routes';
+
+const HeadProvider = _HeadProvider as FC<{ children: any }>;
 
 const routes = getLazyRoutes();
 
 const container = document.getElementById('app')!;
 const entry = (
   <React.StrictMode>
-    <BrowserRouter>
-      <App routes={routes} />
-    </BrowserRouter>
+    <HeadProvider>
+      <BrowserRouter>
+        <App routes={routes} />
+      </BrowserRouter>
+    </HeadProvider>
   </React.StrictMode>
 );
 

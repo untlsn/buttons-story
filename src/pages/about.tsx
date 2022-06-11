@@ -1,5 +1,5 @@
+import { Title } from 'react-head';
 import logo from '~/assets/images/logo.svg';
-import Title from '~/providers/Title';
 
 export default function About() {
   return (
