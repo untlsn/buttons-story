@@ -11,3 +11,41 @@
   width: 1em;
   height: 1em;
 }
+
+.button-main-colors {
+  --main-colors: null;
+  --text-color: null;
+
+  background-color: var(--main-colors);
+  color: var(--text-color);
+}
+
+.button-main-colors:hover:not(:disabled), .button-main-colors:focus:not(:disabled) {
+  --hocus-colors: null;
+  background-color: var(--hocus-colors);
+}
+
+.button-second-colors {
+  --main-colors: null;
+
+  border-color: var(--main-colors);
+  color: var(--main-colors);
+  background-color: transparent;
+}
+
+.button-second-colors:hover:not(:disabled), .button-second-colors:focus:not(:disabled) {
+  background-color: #EAEFFF;
+}
+
+.button-third-colors {
+  --main-colors: null;
+
+  color: var(--main-colors);
+  background-color: transparent;
+}
+
+.button-third-colors:hover:not(:disabled), .button-third-colors:focus:not(:disabled) {
+  background-color: #EAEFFF;
+}
+
+

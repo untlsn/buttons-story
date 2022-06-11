@@ -46,3 +46,4 @@ rules:
   default-param-last: off
   no-underscore-dangle: off
   no-use-before-define: off
+  react/prop-types: off

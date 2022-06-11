@@ -8,8 +8,8 @@ module.exports = {
     extend: {
       colors: {
         logo: {
-          orange: '#f7542e'
-        }
+          orange: '#f7542e',
+        },
       },
     },
   },
