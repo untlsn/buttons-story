@@ -42,6 +42,31 @@ function Buttons() {
           <Button color="primary" endIcon="i-mdi-local-grocery-store" />
         </ComponentPreview>
       </div>
+      <div className="flex gap-16 align-top">
+        <ComponentPreview name="<Button size='sm' />">
+          <Button color="primary" size="sm" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button size='md' />">
+          <Button color="primary" size="md" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button size='lg' />">
+          <Button color="primary" size="lg" />
+        </ComponentPreview>
+      </div>
+      <div className="flex gap-16 align-top">
+        <ComponentPreview name="<Button color='default' />">
+          <Button color="default" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button color='primary' />">
+          <Button color="primary" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button color='secondary' />">
+          <Button color="secondary" />
+        </ComponentPreview>
+        <ComponentPreview name="<Button color='danger' />">
+          <Button color="danger" />
+        </ComponentPreview>
+      </div>
     </div>
   );
 }

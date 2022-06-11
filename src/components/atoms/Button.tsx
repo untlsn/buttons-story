@@ -8,6 +8,7 @@ export interface ButtonProps extends HTMLButtonProps {
   color?: keyof typeof bgColors
   startIcon?: string,
   endIcon?: string,
+  size?: keyof typeof padding
 }
 
 const bgColors = {
@@ -30,10 +31,17 @@ const themes = {
   outline: 'button-second-colors border-1',
 };
 
+const padding = {
+  sm: '.25rem 0.75rem',
+  md: '0.5rem 1rem',
+  lg: '0.75rem 2rem',
+};
+
 function Button(props: ButtonProps) {
   const disableShadow = props.disableShadow || !!props.variant;
   const theme = props.variant || 'default';
   const color = props.color || 'default';
+  const size = props.size || 'md';
 
   return (
     <button
@@ -49,6 +57,7 @@ function Button(props: ButtonProps) {
         '--main-colors': bgColors[color],
         '--text-color': color == 'default' ? '#3F3F3F' : 'white',
         '--hocus-colors': bgHocusColors[color],
+        padding: padding[size],
       } as any}
     >
       {props.startIcon && <i className={`${props.startIcon} mr-2`} />}
