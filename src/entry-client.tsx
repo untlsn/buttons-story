@@ -8,11 +8,19 @@ import { getLazyRoutes } from '~/routes';
 
 const routes = getLazyRoutes();
 
-ReactDOM.hydrateRoot(
-  document.getElementById('app')!,
+const isProd = import.meta.env.MODE == 'production';
+
+const container = document.getElementById('app')!;
+const entry = (
   <React.StrictMode>
     <BrowserRouter>
       <App routes={routes} />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+if (isProd) {
+  ReactDOM.hydrateRoot(container, entry);
+} else {
+  ReactDOM.createRoot(container).render(entry);
+}
