@@ -38,16 +38,21 @@ const padding = {
 };
 
 function Button(props: ButtonProps) {
-  const disableShadow = props.disableShadow || !!props.variant;
-  const theme = props.variant || 'default';
-  const color = props.color || 'default';
-  const size = props.size || 'md';
+  const {
+    disableShadow = !!props.variant,
+    variant = 'default',
+    color = 'default',
+    size = 'md',
+    startIcon,
+    endIcon,
+    ...forButton
+  } = props;
 
   return (
     <button
       type={props.onClick ? 'button' : 'submit'}
-      {...props}
-      className={`px-4 py-2 rounded transition-colors ${themes[theme]} ${
+      {...forButton}
+      className={`px-4 py-2 rounded transition-colors ${themes[variant]} ${
         props.className || ''} ${
         disableShadow ? '' : 'shadow-md'
       } ${
@@ -58,11 +63,12 @@ function Button(props: ButtonProps) {
         '--text-color': color == 'default' ? '#3F3F3F' : 'white',
         '--hocus-colors': bgHocusColors[color],
         padding: padding[size],
+        ...props.style,
       } as any}
     >
-      {props.startIcon && <i className={`${props.startIcon} mr-2`} />}
+      {startIcon && <i className={`${startIcon} mr-2`} />}
       {props.children}
-      {props.endIcon && <i className={`${props.endIcon} ml-2`} />}
+      {endIcon && <i className={`${endIcon} ml-2`} />}
     </button>
   );
 }
