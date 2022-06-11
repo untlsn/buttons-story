@@ -1,12 +1,12 @@
 import fs from 'fs';
-import renderTemplate from './server/renderTemplate.mjs';
-import { toAbsolute } from './server/root.mjs';
-import print from './server/print.mjs';
+import renderTemplate from './renderTemplate.mjs';
+import { toAbsolute } from './root.mjs';
+import print from './print.mjs';
 
 const template = fs.readFileSync(toAbsolute('dist/static/index.html'), 'utf-8').replace(/>\s+</g, '><');
 
 const bootstrap = async () => {
-  const { render, names } = await import('./dist/server/entry-server.js');
+  const { render, names } = await import('../dist/server/entry-server.js');
   const staticNames = names.filter((name) => !name.includes('['));
 
   // eslint-disable-next-line no-restricted-syntax

@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prerender": "node prerender.mjs"
+    "prerender": "node server/prerender.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.18.2",
