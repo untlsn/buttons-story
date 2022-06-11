@@ -8,8 +8,6 @@ import { getLazyRoutes } from '~/routes';
 
 const routes = getLazyRoutes();
 
-const isProd = import.meta.env.MODE == 'production';
-
 const container = document.getElementById('app')!;
 const entry = (
   <React.StrictMode>
@@ -19,7 +17,8 @@ const entry = (
   </React.StrictMode>
 );
 
-if (isProd) {
+// Client-side rendering in development, SSG in production
+if (import.meta.env.PROD) {
   ReactDOM.hydrateRoot(container, entry);
 } else {
   ReactDOM.createRoot(container).render(entry);
