@@ -1,11 +1,12 @@
 import ComponentPreview from '~/components/templates/ComponentPreview';
 import ButtonCore, { ButtonProps } from '~/components/atoms/Button';
-import buttonText from '~/stores/buttonText';
+import buttonStore from '~/stores/buttonStore';
+import ButtonDataEdit from '~/components/organisms/ButtonDataEdit';
 
 function Button(props: ButtonProps) {
   return (
     <O>{() => (
-      <ButtonCore {...props}>{buttonText.value}</ButtonCore>
+      <ButtonCore {...props}>{buttonStore.text}</ButtonCore>
     )}
     </O>
   );
@@ -13,7 +14,8 @@ function Button(props: ButtonProps) {
 
 function Buttons() {
   return (
-    <div className="p-16 space-y-8">
+    <main className="p-16 space-y-8">
+      <ButtonDataEdit />
       <ComponentPreview name="<Button />">
         <Button />
       </ComponentPreview>
@@ -67,7 +69,7 @@ function Buttons() {
           <Button color="danger" />
         </ComponentPreview>
       </div>
-    </div>
+    </main>
   );
 }
 
